@@ -1,9 +1,9 @@
 from pydantic import BaseModel
 from typing import List
-from task import Task
+from models.task import Task
 
 
-class Test(BaseModel):
+class Exam(BaseModel):
     description: str = ""
     tasks: List[Task]
 
