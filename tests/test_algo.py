@@ -67,7 +67,7 @@ class TestPropositionalLogicAlgorithms(TestCase):
         self.assertEqual(formula, root.formula)
         self.assertEqual(root.value, False)
     
-    def test_propositional_formula_from_tree2(self):
+    def test_propositional_formula_evaluation2(self):
         formula = "A&B→(B→(C→A))"
         root = OperatorNode(impl)
         root.children.append(OperatorNode(and_))
@@ -82,7 +82,7 @@ class TestPropositionalLogicAlgorithms(TestCase):
         self.assertEqual(formula, root.formula)
         self.assertEqual(root.value, True)
     
-    def test_propositional_formula_from_tree3(self):
+    def test_propositional_formula_evaluation3(self):
         formula = "A↔B↔C"
         root = OperatorNode(eq)
         root.children.append(LiteralNode("A", False))
