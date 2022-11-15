@@ -19,7 +19,7 @@ operator_priority = {
     impl: 4,
     eq: 5
 }
-arity= {
+arity = {
     not_: 1,
     and_: 2,
     or_: 2,

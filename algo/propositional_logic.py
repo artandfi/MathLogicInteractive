@@ -5,10 +5,12 @@ from models.operators import arity
 
 
 def generate_propositional_formula(available_operators, operators_num, letters_num):
-    if operators_num == 0:
-        letter = random.choice(ascii_uppercase[:letters_num])
-        value = random.choice((True, False))
+    available_letters = ascii_uppercase[:letters_num]
+    literal_values = {letter: random.choice((True, False)) for letter in available_letters}
 
+    if operators_num == 0:
+        letter = random.choice(available_letters)
+        value = literal_values[letter]
         return LiteralNode(letter, value)
 
     operator = random.choice(available_operators)
