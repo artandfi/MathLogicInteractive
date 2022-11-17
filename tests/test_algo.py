@@ -1,7 +1,7 @@
 from unittest import TestCase
 from models.operators import and_, or_, impl, eq
-from models.propositional_formula import LiteralNode, OperatorNode
-from algo.propositional_logic import all_number_splits_into_addends, generate_propositional_formula
+from models.propositional_logic.formula_nodes import LiteralNode, OperatorNode
+from algo.propositional_logic import all_number_splits_into_addends, generate_propositional_formula_root
 
 
 class TestPropositionalLogicAlgorithms(TestCase):
@@ -52,10 +52,10 @@ class TestPropositionalLogicAlgorithms(TestCase):
         self.assertEqual(splits, all_number_splits_into_addends(number, addends_no))
 
     def test_generate_propositional_formula(self):
-        generate_propositional_formula([and_, or_, impl], 7, 4)
+        generate_propositional_formula_root([and_, or_, impl], 7, 4)
     
     def test_propositional_formula_evaluation1(self):
-        formula = "(A∨B)&C→B"
+        formula = "(AvB)&C->B"
         root = OperatorNode(impl)
         root.children.append(OperatorNode(and_))
         root.children.append(LiteralNode("B", False))
@@ -68,7 +68,7 @@ class TestPropositionalLogicAlgorithms(TestCase):
         self.assertEqual(root.value, False)
     
     def test_propositional_formula_evaluation2(self):
-        formula = "A&B→(B→(C→A))"
+        formula = "A&B->(B->(C->A))"
         root = OperatorNode(impl)
         root.children.append(OperatorNode(and_))
         root.children.append(OperatorNode(impl))
@@ -83,7 +83,7 @@ class TestPropositionalLogicAlgorithms(TestCase):
         self.assertEqual(root.value, True)
     
     def test_propositional_formula_evaluation3(self):
-        formula = "A↔B↔C"
+        formula = "A<->B<->C"
         root = OperatorNode(eq)
         root.children.append(LiteralNode("A", False))
         root.children.append(OperatorNode(eq))

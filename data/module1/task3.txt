@@ -1,0 +1,4 @@
+P
+Determine whether the formula AvB&¬AvC->BvC is a tautology.
+5
+*Yes, No

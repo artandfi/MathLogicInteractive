@@ -1,15 +1,22 @@
 Propositional logic studies the logical relationships between statements connected with logical connectives.
+
 Definition 1. A statement is a sentence that can be considered from the point of view of its falsehood or truthness.
 Definition 2. A predicate is a statement about certain subject(s) that expresses its (their) properties and relations between them (if there are several subjects).
 Definition 3. A predicate is a statement that can take on either "true" or "false" value. We can also define a predicate P as a function that takes data from some set A as its inputs and outputs the values of either "true" or "false":
+
 P: A -> {T, F}
-Just like with real-world lingual conjunctions that allow us to produce more complex sentences, we can construct more complex predicates using the respective logical operators.
-Definition 4. Logical connectives (operators) are the means to create more complex statements (predicates) from simpler ones, operating only on the truthy values produced by predicates or assigned to simpler statements. That is, we don’t have to worry about the inner nature of the predicate when applying logical operators to it; what only matters for the logical operator is the values predicates produce.
+
+Just like real-world lingual conjunctions allow us to produce more complex sentences, we can construct more complex predicates using the respective logical operators.
+
+Definition 4. Logical connectives (operators) are the means to create more complex statements (predicates) from simpler ones, operating only on the truthy values produced by predicates or assigned to simpler statements. That is, we don't have to worry about the inner nature of the predicate when applying logical operators to it; what only matters for the logical operator is the values predicates produce.
+
 The basic logical operators are:
 - Negation ¬ (logical "not")
-- Disjunction V (logical "or")
+- Disjunction v (logical "or")
 - Conjunction & (logical "and")
 - Implication ->
 - Equivalence <->
-- Exclusive disjunction + (exclusive logical "or", xor)
 Each logical connective has a so-called truth table associated with it. Such table depicts what outputs the inputs are mapped to.
+#
+Definition 5. A propositional formula is called a tautology if it is true for all value sets of its propositional inputs. 
+Definition 6. Formula F is called a tautological consequence of A, which we'll denote A |= B, if A -> B is a tautology.

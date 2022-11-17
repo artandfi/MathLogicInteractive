@@ -8,9 +8,9 @@ def impl(a, b):
 operator_strings = {
     not_: "¬",
     and_: "&",
-    or_: "∨",
-    impl: "→",
-    eq: "↔"
+    or_: "v",
+    impl: "->",
+    eq: "<->"
 }
 operator_priority = {
     not_: 1,

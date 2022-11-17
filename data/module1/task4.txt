@@ -1,0 +1,7 @@
+R
+Determine whether the formula # is a tautology.
+5
+¬, v, &, ->, <->
+7
+5
+Yes, No

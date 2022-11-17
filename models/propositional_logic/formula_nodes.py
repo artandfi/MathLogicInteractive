@@ -6,6 +6,7 @@ class OperatorNode(TreeNode):
     def __init__(self, operator):
         super().__init__(operator)
         self.operator = operator
+        self.literal_values = None
     
     def __str__(self):
         return operator_strings[self.operator]
@@ -44,9 +45,6 @@ class OperatorNode(TreeNode):
         terms.extend(["("] if needs_parens else [])
         self._traverse(child, terms)
         terms.extend([")"] if needs_parens else [])
-
-    
-    
 
 
 class LiteralNode(TreeNode):

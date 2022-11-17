@@ -1,13 +1,26 @@
 import random
 from string import ascii_uppercase
-from models.propositional_formula import OperatorNode, LiteralNode
+from collections import OrderedDict
+from models.propositional_logic.formula_nodes import OperatorNode, LiteralNode
 from models.operators import arity
 
 
-def generate_propositional_formula(available_operators, operators_num, letters_num):
+def generate_propositional_formula_root(available_operators, operators_num, letters_num):
     available_letters = ascii_uppercase[:letters_num]
-    literal_values = {letter: random.choice((True, False)) for letter in available_letters}
+    literal_values = OrderedDict((letter, random.choice((True, False))) for letter in available_letters)
+    
+    root = _generate_propositional_formula_root(available_letters, available_operators, operators_num, literal_values)
+    formula = root.formula
 
+    for literal in available_letters:
+        if literal not in formula:
+            del literal_values[literal]
+    
+    root.literal_values = literal_values
+    return root
+
+
+def _generate_propositional_formula_root(available_letters, available_operators, operators_num, literal_values):
     if operators_num == 0:
         letter = random.choice(available_letters)
         value = literal_values[letter]
@@ -18,7 +31,7 @@ def generate_propositional_formula(available_operators, operators_num, letters_n
     operators_num_split = random.choice(all_number_splits_into_addends(operators_num-1, arity[operator]))
 
     for op_no in operators_num_split:
-        subformula = generate_propositional_formula(available_operators, op_no, letters_num)
+        subformula = _generate_propositional_formula_root(available_letters, available_operators, op_no, literal_values)
         node.children.append(subformula)
     
     return node
@@ -44,3 +57,7 @@ def all_number_splits_into_addends(number, addends_no, res=None, split=None):
             del split[n-1:]
     
     return res
+
+
+def is_tautology(formula_root):
+    pass

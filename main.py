@@ -1,10 +1,16 @@
 import dearpygui.dearpygui as dpg
-from constants import DATA_PATH, DEFAULT_FONT_PATH, MAIN_WND
+from constants import DEFAULT_FONT_PATH, MAIN_WND
 from callbacks import module_btn_click
 from dearpygui_ext.themes import create_theme_imgui_light
+from models.propositional_logic.module import PropositionalLogicModule
 
 
-modules = ['Propositional Logic', 'Predicate Calculus', 'Sequent Calculus', 'Resolution Method']
+modules = [
+    PropositionalLogicModule(),
+    #'Predicate Calculus',
+    #'Sequent Calculus',
+    #'Resolution Method'
+]
 
 
 def setup():
@@ -18,12 +24,11 @@ def setup():
         dpg.bind_font(default_font)
         dpg.add_text("Modules")
     
-        for i, module in enumerate(modules):
+        for module in modules:
             user_data = {
-                "label": module,
-                "path": f"{DATA_PATH}/module{i+1}"
+                "module": module
             }
-            dpg.add_button(label=module, callback=module_btn_click, user_data=user_data)
+            dpg.add_button(label=module.name, callback=module_btn_click, user_data=user_data)
         
         dpg.add_text(f"Score: 67/100 (D)")
         dpg.add_progress_bar(overlay="Progress: 52%", default_value=0.52)

@@ -3,16 +3,13 @@ from constants import MAIN_WND
 
 
 def module_btn_click(sender, app_data, user_data):
-    with dpg.window(tag=user_data["label"], label=user_data["label"]):
-        with open(f"{user_data['path']}/contents.txt") as f:
-            contents = f.read()
+    module = user_data["module"]
 
-        dpg.add_text(contents, wrap=dpg.get_viewport_client_width()*0.95)
-        dpg.add_text("Training test contents...")
-        dpg.add_text("Test contents...")
-        dpg.add_button(label="Back", callback=back_btn_click, user_data=user_data["label"])
+    with dpg.window(tag=module.name, label=module.name):
+        module.render()
+        dpg.add_button(label="Back", callback=back_btn_click, user_data=module.name)
     
-    dpg.set_primary_window(user_data["label"], True)
+    dpg.set_primary_window(module.name, True)
     dpg.hide_item(dpg.get_active_window())
     
 
