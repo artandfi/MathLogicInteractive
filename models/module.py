@@ -16,6 +16,7 @@ class Module:
             self.contents = f.read().split("#")
     
     def render(self):
+        dpg.add_text()
         dpg.add_text("Exam (test)")
         self.exam.render()
 

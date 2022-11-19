@@ -1,7 +1,7 @@
 R
 Put the parentheses in the correct order: #
 5
-¬, ->
+~, ->
 5
 5
 _

@@ -1,7 +1,7 @@
 R
 Prove or disprove: # |= #.
 5
-¬, v, &, ->, <->
+~, v, &, ->, <->
 4
 4
 Holds, Doesn't hold

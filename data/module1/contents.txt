@@ -11,7 +11,7 @@ Just like real-world lingual conjunctions allow us to produce more complex sente
 Definition 4. Logical connectives (operators) are the means to create more complex statements (predicates) from simpler ones, operating only on the truthy values produced by predicates or assigned to simpler statements. That is, we don't have to worry about the inner nature of the predicate when applying logical operators to it; what only matters for the logical operator is the values predicates produce.
 
 The basic logical operators are:
-- Negation ¬ (logical "not")
+- Negation ~ (logical "not")
 - Disjunction v (logical "or")
 - Conjunction & (logical "and")
 - Implication ->

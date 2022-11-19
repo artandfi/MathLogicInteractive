@@ -6,7 +6,7 @@ def impl(a, b):
 
 
 operator_strings = {
-    not_: "¬",
+    not_: "~",
     and_: "&",
     or_: "v",
     impl: "->",

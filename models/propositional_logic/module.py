@@ -15,7 +15,7 @@ class PropositionalLogicModule(Module):
         
         labels = ["Negation", "Disjunction", "Conjunction", "Implication", "Equivalence"]
         headers_list = [
-            ["A", "¬A"],
+            ["A", "~A"],
             ["A", "B", "AVB"],
             ["A", "B", "A&B"],
             ["A", "B", "A->B"],

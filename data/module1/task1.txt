@@ -1,7 +1,7 @@
 R
 Evaluate a propositional formula # if #.
 5
-¬, v, &, ->, <->
+~, v, &, ->, <->
 5
 4
 True, False

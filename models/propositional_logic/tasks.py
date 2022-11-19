@@ -18,7 +18,7 @@ class EvaluateFormulaRandomTask(RandomTask):
 
     def render(self):
         super().render()
-        dpg.add_combo(items=self.answer_options, default_value=self.answer_options[0])
+        self.answer_input = dpg.add_combo(items=self.answer_options, default_value=self.answer_options[0])
 
 
 class ParenthesesRandomTask(RandomTask):
@@ -31,13 +31,13 @@ class ParenthesesRandomTask(RandomTask):
     
     def render(self):
         super().render()
-        dpg.add_input_text()
+        self.answer_input = dpg.add_input_text()
 
 
 class TautologyPredefinedTask(PredefinedTask):
     def render(self):
         super().render()
-        dpg.add_combo(items=self.answer_options, default_value=self.answer_options[0])
+        self.answer_input = dpg.add_combo(items=self.answer_options, default_value=self.answer_options[0])
 
 
 class TautologyRandomTask(RandomTask):
@@ -49,7 +49,7 @@ class TautologyRandomTask(RandomTask):
     
     def render(self):
         super().render()
-        dpg.add_combo(items=self.answer_options, default_value=self.answer_options[0])
+        self.answer_input = dpg.add_combo(items=self.answer_options, default_value=self.answer_options[0])
 
 
 class TautologicalConsequenceRandomTask(RandomTask):
@@ -66,4 +66,4 @@ class TautologicalConsequenceRandomTask(RandomTask):
     
     def render(self):
         super().render()
-        dpg.add_combo(items=self.answer_options, default_value=self.answer_options[0])
+        self.answer_input = dpg.add_combo(items=self.answer_options, default_value=self.answer_options[0])

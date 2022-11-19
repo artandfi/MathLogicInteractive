@@ -7,7 +7,8 @@ class Task:
     def __init__(self, path, number):
         self.path = path
         self.number = number
-        self.score = 0
+        self.correct_answer = None
+        self.answer_input = None
         self._load_contents()
     
     def _load_contents(self):
@@ -19,6 +20,10 @@ class Task:
     
     def render(self):
         dpg.add_text(f"{self.number}. {self.description}")
+    
+    @property
+    def score(self):
+        return self.max_score if self.correct_answer == dpg.get_value(self.answer_input) else 0
         
 
 class PredefinedTask(Task):
