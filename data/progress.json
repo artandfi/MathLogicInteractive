@@ -1,0 +1,42 @@
+{
+    "Propositional Logic": {
+        "scores": [
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        "completed": true
+    },
+    "Predicate Calculus": {
+        "scores": [
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        "completed": false
+    },
+    "Sequent Calculus": {
+        "scores": [
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        "completed": false
+    },
+    "Resolution Method": {
+        "scores": [
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        "completed": false
+    }
+}

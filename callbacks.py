@@ -17,6 +17,7 @@ def module_btn_click(sender, app_data, user_data):
 
 def submit_btn_click(sender, app_data, user_data):
     module = user_data
+    module.save_progress()
     
     with dpg.window(label="Result", modal=True, show=True, tag="modal_id", no_title_bar=True):
         dpg.add_text(f"Your score: {sum(task.score for task in module.exam.tasks)}/{module.max_score}")
