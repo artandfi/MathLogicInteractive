@@ -52,11 +52,7 @@ class LiteralNode(TreeNode):
         super().__init__(name)
         self.name = name
         self.priority = 0
-        self._value = value
-    
-    @property
-    def value(self):
-        return self._value
+        self.value = value
     
     def __str__(self):
         return self.name

@@ -1,6 +1,7 @@
 import random
 from string import ascii_uppercase
 from collections import OrderedDict
+from itertools import groupby, product
 from models.propositional_logic.formula_nodes import OperatorNode, LiteralNode
 from models.operators import arity
 
@@ -59,5 +60,23 @@ def all_number_splits_into_addends(number, addends_no, res=None, split=None):
     return res
 
 
-def is_tautology(formula_root):
-    pass
+def is_tautology(formula_root: OperatorNode):
+    literal_groups = sorted(formula_root.leaves, key=str)
+    literal_groups = [list(group) for _, group in groupby(literal_groups)]
+    cached_values = [group[0].value for group in literal_groups]
+
+    for values in product((True, False), repeat=len(literal_groups)):
+        _fill_literal_values(literal_groups, values)
+        
+        if not formula_root.value:
+            _fill_literal_values(literal_groups, cached_values)
+            return False
+    
+    _fill_literal_values(literal_groups, cached_values)
+    return True
+
+
+def _fill_literal_values(literal_groups, values):
+    for literal_group, value in zip(literal_groups, values):
+        for literal in literal_group:
+            literal.value = value

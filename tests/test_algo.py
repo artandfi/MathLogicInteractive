@@ -1,7 +1,7 @@
 from unittest import TestCase
 from models.operators import and_, or_, impl, eq
 from models.propositional_logic.formula_nodes import LiteralNode, OperatorNode
-from algo.propositional_logic import all_number_splits_into_addends, generate_propositional_formula_root
+from algo.propositional_logic import all_number_splits_into_addends, generate_propositional_formula_root, is_tautology
 
 
 class TestPropositionalLogicAlgorithms(TestCase):
@@ -65,7 +65,7 @@ class TestPropositionalLogicAlgorithms(TestCase):
         root.left.left.children.append(LiteralNode("B", False))
 
         self.assertEqual(formula, root.formula)
-        self.assertEqual(root.value, False)
+        self.assertFalse(root.value)
     
     def test_propositional_formula_evaluation2(self):
         formula = "A&B->(B->(C->A))"
@@ -80,7 +80,7 @@ class TestPropositionalLogicAlgorithms(TestCase):
         root.right.right.children.append(LiteralNode("A", True))
 
         self.assertEqual(formula, root.formula)
-        self.assertEqual(root.value, True)
+        self.assertTrue(root.value)
     
     def test_propositional_formula_evaluation3(self):
         formula = "A<->B<->C"
@@ -91,4 +91,24 @@ class TestPropositionalLogicAlgorithms(TestCase):
         root.right.children.append(LiteralNode("C", False))
 
         self.assertEqual(formula, root.formula)
-        self.assertEqual(root.value, True)
+        self.assertTrue(root.value)
+    
+    def test_tautology1(self):
+        # A->AvB
+        formula_root = OperatorNode(impl)
+        formula_root.children.append(LiteralNode("A"))
+        formula_root.children.append(OperatorNode(or_))
+        formula_root.right.children.append(LiteralNode("A"))
+        formula_root.right.children.append(LiteralNode("B"))
+
+        self.assertTrue(is_tautology(formula_root))
+    
+    def test_tautology2(self):
+        # AvB->A
+        formula_root = OperatorNode(impl)
+        formula_root.children.append(OperatorNode(or_))
+        formula_root.children.append(LiteralNode("A"))
+        formula_root.left.children.append(LiteralNode("A"))
+        formula_root.left.children.append(LiteralNode("B"))
+        
+        self.assertFalse(is_tautology(formula_root))
