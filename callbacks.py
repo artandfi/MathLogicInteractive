@@ -10,8 +10,9 @@ def module_btn_click(sender, app_data, user_data):
     with dpg.window(tag=module.name, label=module.name):
         module.render()
         dpg.add_text()
-        dpg.add_button(label="Submit", callback=submit_btn_click, user_data=user_data, show=not module.completed)
-        dpg.add_button(label="Back", callback=back_btn_click, user_data=[module.name])
+        with dpg.group(horizontal=True):
+            dpg.add_button(label="Submit", callback=submit_btn_click, user_data=user_data, show=not module.completed)
+            dpg.add_button(label="Back", callback=back_btn_click, user_data=[module.name])
     
     dpg.set_primary_window(module.name, True)
     dpg.hide_item(dpg.get_active_window())
