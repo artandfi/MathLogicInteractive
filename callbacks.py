@@ -1,6 +1,7 @@
 import json
 import dearpygui.dearpygui as dpg
 from constants import MAIN_WND, PROGRESS_FILE, SCORE_TEXT, PROGRESS_BAR
+from util import reset_progress
 
 
 def module_btn_click(sender, app_data, user_data):
@@ -42,18 +43,7 @@ def back_btn_click(sender, app_data, user_data):
 
 def reset_progress_btn_click(sender, app_data, user_data):
     modules = user_data
+    reset_progress(modules, PROGRESS_FILE)
     
     dpg.set_value(SCORE_TEXT, f"Score: 0/{sum(m.max_score for m in modules)}")
     dpg.set_value(PROGRESS_BAR, 0)
-
-    with open(PROGRESS_FILE, "r") as f:
-        data = json.load(f)
-    
-    for module in modules:
-        scores_len = len(data[module.name]["scores"])
-        data[module.name]["scores"] = [0 for _ in range(scores_len)]
-        data[module.name]["completed"] = False
-        module.refresh()
-        
-    with open(PROGRESS_FILE, "w") as f:
-        json.dump(data, f, indent=4)
