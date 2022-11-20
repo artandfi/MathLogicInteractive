@@ -8,6 +8,7 @@ class Module:
     name = "Module name"
     folder = "Module folder"
     exam_class = Exam
+    progress_file_path = PROGRESS_FILE
 
     def __init__(self):
         self.exam = self.exam_class()
@@ -30,13 +31,13 @@ class Module:
             dpg.add_text("You've already passed the exam!")
     
     def save_progress(self):
-        with open(PROGRESS_FILE, "r") as f:
+        with open(self.progress_file_path, "r") as f:
             data = json.load(f)
         
         data[self.name]["scores"] = [task.score for task in self.exam.tasks]
         data[self.name]["completed"] = True
         
-        with open(PROGRESS_FILE, "w") as f:
+        with open(self.progress_file_path, "w") as f:
             json.dump(data, f, indent=4)
     
     def refresh(self):
