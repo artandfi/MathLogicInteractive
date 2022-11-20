@@ -1,6 +1,6 @@
 import re
 import dearpygui.dearpygui as dpg
-from models.operators import impl
+from models.operators import impl, operator_strings
 from models.task import PredefinedTask, RandomTask
 from models.propositional_logic.formula_nodes import OperatorNode
 from algo.propositional_logic import generate_propositional_formula_root, is_tautology
@@ -28,7 +28,12 @@ class ParenthesesRandomTask(RandomTask):
         self.correct_answer = self.formula_root.formula
         formula_no_parens = re.sub(r"\(|\)", "", self.correct_answer)
         self.description = self.description.replace("#", formula_no_parens)
-    
+        
+        impl_str = operator_strings[impl]
+        impl_count = self.correct_answer.count(impl_str)
+        self.correct_answer = f"{formula_no_parens.replace(impl_str, f'{impl_str}(', impl_count-1)}{')'*(impl_count-1)}"
+        print(self.correct_answer)
+
     def render(self):
         super().render()
         self.answer_input = dpg.add_input_text()
@@ -45,7 +50,7 @@ class TautologyRandomTask(RandomTask):
         super().__init__(path, number)
         self.formula_root = generate_propositional_formula_root(self.operators, self.operators_num, self.letters_num)
         self.description = self.description.replace("#", self.formula_root.formula)
-        self.correct_answer = is_tautology(self.formula_root)
+        self.correct_answer = "Yes" if is_tautology(self.formula_root) else "No"
     
     def render(self):
         super().render()
@@ -62,7 +67,7 @@ class TautologicalConsequenceRandomTask(RandomTask):
         self.formula_root = OperatorNode(impl)
         self.formula_root.children.append(self.lhs_root)
         self.formula_root.children.append(self.rhs_root)
-        self.correct_answer = is_tautology(self.formula_root)
+        self.correct_answer = "Holds" if is_tautology(self.formula_root) else "Doesn't hold"
     
     def render(self):
         super().render()
