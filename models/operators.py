@@ -1,7 +1,8 @@
 from operator import not_, or_, and_, eq
 
 
-def impl(a, b):
+def impl(a, b, /):
+    """Implication (->) logical operator. A->B is equivalent to ~AvB."""
     return not a or b
 
 
