@@ -1,0 +1,7 @@
+R
+Prove or disprove using tautology theorem: if |-#, then |-#.
+5
+~, v, &, ->
+4
+3
+Holds, Doesn't hold

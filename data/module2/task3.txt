@@ -1,0 +1,4 @@
+P
+Prove or disprove using tautology theorem: if |-AvC, then |-A&B->C.
+5
+*Holds, Doesn't hold

@@ -3,11 +3,12 @@ from constants import DEFAULT_FONT_PATH, MAIN_WND, SCORE_TEXT, PROGRESS_BAR
 from callbacks import module_btn_click, reset_progress_btn_click
 from dearpygui_ext.themes import create_theme_imgui_light
 from models.propositional_logic.module import PropositionalLogicModule
+from models.propositional_calculus.module import PropositionalCalculusModule
 
 
 modules = [
     PropositionalLogicModule(),
-    #'Predicate Calculus',
+    PropositionalCalculusModule(),
     #'Sequent Calculus',
     #'Resolution Method'
 ]

@@ -1,0 +1,4 @@
+P
+What inference is correct for "if |-AvB, then |-~~AvB"?
+5
+*Ax-R5-R4, Ax-R3-R5, Ax-R5-R3-R4, R1-R2-Ax-R4

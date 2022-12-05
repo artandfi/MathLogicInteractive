@@ -1,0 +1,32 @@
+Definition 1. A formal system is a triple (L, A, R):
+- L is a language (its words are formulae)
+- A is a set of axioms (each axiom is a formula)
+- R is a set of inference rules of form R1, ..., Rn |- R where R1, ..., Rn are called premises and R is called a conclusion.
+Here, "|-" sign can be treated as "therefore".
+
+Definition 2. A theorem is a formula obtained from applying the inference rules to the axioms. We'll denote the fact that F is a theorem as |-F.
+Definition 3. An inference is a finite sequence of formulae F1, ..., Fn such that each of these is either an axiom or obtained from its predecessors via some inference rule.
+Definition 4. Propositional calculus (PC) is a formal system (L, A, R):
+- L is a language of propositional logic (PL)
+- A is a set of axioms
+- R is a set of PC inference rules (IR)
+where A is defined via a single propositional axiom ~FvF, and IR set is defined as follows:
+R1) F |- GvF - extension
+R2) FvF |- F - reduction
+R3) Fv(GvH) |- (FvG)vH - associativity
+R4) FvG, ~FvH |- GvH - intersection
+
+To prove that certain inference holds, we need to consecutively apply the inference rules until we see that the result is indeed correct.
+For example, we can prove the commutativity rule "if |-AvB, then |-BvA" in the following way: we have |-AvB from our assumption, |-~AvA is an axiom, therefore we have |-BvA by the intersection rule.
+
+Here is the list of some derived rules that might come in handy during exam:
+R5) AvB |- BvA - commutativity
+R6) A, A->B |- B - modus ponens
+R7) (AvB)vC |- Av(BvC) - complete associativity
+
+Theorem 1 (tautology theorem). The set of theorems and the set of tautologies are the same.
+Corollary 1. If {A1, ..., An} |= A and |-A1, ..., |-An, then |-A.
+Tautology theorem and its Corollary let us prove certain theorems without a need to provide inferences that are often hard to construct.
+Instead, we try to prove (or disprove) some tautological consequence which truthness or falsehood then immediately tells us whether a theorem holds or not.
+Example: "if |-AvC->BvD, then |-A->B and |-C->D". Assuming this holds, we should have AvC->BvD |= (A->B)&(C->D). For values A = C = D = T and B = F, we get AvC->BvD = T and (A->B)&(C->D) = F.
+Hence, |= doesn't hold and neither does our presumed theorem.

@@ -32,7 +32,6 @@ class ParenthesesRandomTask(RandomTask):
         impl_str = operator_strings[impl]
         impl_count = self.correct_answer.count(impl_str)
         self.correct_answer = f"{formula_no_parens.replace(impl_str, f'{impl_str}(', impl_count-1)}{')'*(impl_count-1)}"
-        print(self.correct_answer)
 
     def render(self):
         super().render()
