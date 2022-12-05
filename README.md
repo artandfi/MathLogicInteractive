@@ -1,5 +1,4 @@
 # MathLogicInteractive
-Interactive Mathematical Logic manual
 
 ## Installation Guide
 Open the folder you'd like to install the program in in the terminal, and run the following command:
