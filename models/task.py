@@ -4,6 +4,7 @@ from models.operators import operator_strings
 
 
 class Task:
+    """A task in the exam."""
     def __init__(self, path, number):
         self.path = path
         self.number = number
@@ -12,6 +13,7 @@ class Task:
         self._load_contents()
     
     def _load_contents(self):
+        """Utility method to load task contents. Shouldn't be called outside of this class."""
         with open(self.path, "r") as f:
             self._contents = [line.strip() for line in f.readlines()]
             
@@ -19,14 +21,22 @@ class Task:
         self.max_score = float(self._contents[2])
     
     def render(self):
+        """Render the contents of the task."""
         dpg.add_text(f"{self.number}. {self.description}")
     
     @property
     def score(self):
+        """
+            Score obtained for completing the task.
+            
+            Returns:
+                float
+        """
         return self.max_score if self.correct_answer == dpg.get_value(self.answer_input) else 0
         
 
 class PredefinedTask(Task):
+    """Task whose conditions are statically predefined in the content file."""
     def _load_contents(self):
         super()._load_contents()
 
@@ -39,6 +49,7 @@ class PredefinedTask(Task):
 
 
 class RandomTask(Task):
+    """Task whose conditions are randomly generated with constraints specified in the content file."""
     def _load_contents(self):
         super()._load_contents()
 

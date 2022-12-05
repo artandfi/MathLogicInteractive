@@ -1,10 +1,10 @@
-import json
 import dearpygui.dearpygui as dpg
 from constants import MAIN_WND, PROGRESS_FILE, SCORE_TEXT, PROGRESS_BAR
 from util import reset_progress
 
 
 def module_btn_click(sender, app_data, user_data):
+    """Occurs when a module button is clicked."""
     modules = user_data["modules"]
     module = modules[user_data["module_index"]]
 
@@ -20,6 +20,7 @@ def module_btn_click(sender, app_data, user_data):
 
 
 def submit_btn_click(sender, app_data, user_data):
+    """Occurs when 'Submit' button is clicked."""
     modules = user_data["modules"]
     module = modules[user_data["module_index"]]
     module.completed = True
@@ -35,6 +36,7 @@ def submit_btn_click(sender, app_data, user_data):
 
 
 def back_btn_click(sender, app_data, user_data):
+    """Occurs when 'Back' button is clicked."""
     dpg.set_primary_window(MAIN_WND, True)
     for wnd in user_data:
         dpg.delete_item(wnd)
@@ -42,6 +44,7 @@ def back_btn_click(sender, app_data, user_data):
 
 
 def reset_progress_btn_click(sender, app_data, user_data):
+    """Occurs when 'Reset progress' button is clicked."""
     modules = user_data
     reset_progress(modules, PROGRESS_FILE)
     
