@@ -5,13 +5,15 @@ from dearpygui_ext.themes import create_theme_imgui_light
 from models.propositional_logic.module import PropositionalLogicModule
 from models.propositional_calculus.module import PropositionalCalculusModule
 from models.sequent_calculus.module import SequentCalculusModule
+from models.resolution_method.module import ResolutionMethodModule
+from util import score_letter
 
 
 modules = [
     PropositionalLogicModule(),
     PropositionalCalculusModule(),
     SequentCalculusModule(),
-    #'Resolution Method'
+    ResolutionMethodModule()
 ]
 
 
@@ -33,7 +35,8 @@ def setup():
             }
             dpg.add_button(label=module.name, callback=module_btn_click, user_data=user_data)
         
-        dpg.add_text(f"Score: {sum(m.score for m in modules)}/{sum(m.max_score for m in modules)}", tag=SCORE_TEXT)
+        score = sum(m.score for m in modules)
+        dpg.add_text(f"Score: {score}/{sum(m.max_score for m in modules)} ({score_letter(score)})", tag=SCORE_TEXT)
         dpg.add_progress_bar(overlay="Course progress", default_value=sum([m.completed for m in modules])/len(modules), tag=PROGRESS_BAR)
         dpg.add_text()
         dpg.add_button(label="Reset progress", callback=reset_progress_btn_click, user_data=modules)

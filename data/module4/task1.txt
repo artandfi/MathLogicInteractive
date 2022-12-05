@@ -1,0 +1,4 @@
+P
+Prove or disprove using resolution method: {A->B, C->D, AvC} |= BvD.
+5
+*Holds, Doesn't hold

@@ -1,0 +1,4 @@
+P
+Prove or disprove using resolution method: {AvB, B->C, ~Av~C} |= ~AvD.
+5
+Holds, *Doesn't hold

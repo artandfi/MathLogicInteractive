@@ -11,12 +11,12 @@
     },
     "Predicate Calculus": {
         "scores": [
-            5.0,
-            5.0,
-            5.0,
+            0,
+            0,
+            0,
             0
         ],
-        "completed": true
+        "completed": false
     },
     "Sequent Calculus": {
         "scores": [

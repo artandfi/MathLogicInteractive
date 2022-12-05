@@ -1,0 +1,12 @@
+To show that formulae of type {F1, ..., Fn} |= F hold or not for any values of their terms, we can used a technique called resolution method.
+Definition 1. We'll call a propositional formula of either form A or ~A a letter (literal). Such letters are called contrary to each other.
+Definition 2. We'll call a propositional formula that is a disjunction of several letters a clausal sentence.
+Definition 3. We'll call () - a clausal sentence with no letters - an empty clausal sentence. It is equivalent to the value of "false".
+
+Resolution rule: suppose L in clausal sentence S and L' in clausal sentence S' are contrary. We'll call a disjunction D of all letters in S that are distinct from L and all letters from S' that are distinct from L'. We can say D is obtained via resolution rule: S, S' |- D.
+
+The algorithm of the resolution method is as follows:
+1. Append ~F to the left hand side of |= into a set of clausal centences in curly braces.
+2. Consecutively apply the resolution rule to any applicable clausal sentences and results of such applicaitons.
+3. If an empty clausal sentence was obtained, stop - this means that |= holds.
+4. Otherwise, pick the values of the terms that show that |= does not hold for any values of the terms.
