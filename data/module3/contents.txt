@@ -1,0 +1,29 @@
+We can prove formulae of form A->B (sequents) using the sequent tree algorithm. What we basically need to show is that, assuming A is true and B is false (making the whole A→B expression false), such an assumption generates a contradiction at some point and so the formula A->B actually holds.
+However, if no such contradiction was found, this means we actually can make the formula falsy and, to show that, we pick certain values of its terms that make the whole formula false - and thus not true in general, which means it does not hold for any values of terms.
+
+The algorithm goes as follows:
+1. We assume that A->B is false, thus setting A to true and B to false. This will be the root of our tree.
+2. For nodes, we recursively look at the main logical connectives in subformulae of A and B and use the following schemes based on the properties of logical operators:
+
+- AvB is true => add two child nodes: "A is true" and "B is true".
+- AvB is false => add one child node: "A is false, B is false".
+
+- A&B is true => add one child node: "A is true, B is true".
+- A&B is false => add two child nodes: "A is false", "B is false".
+
+- A->B is true => add two child nodes: "A is false", "B is true".
+- A->B is false => add one child node: "A is true", "B is false".
+
+- For ~A, there's always one child node "A is false" if ~A is true, and, vice versa, "A is true" if ~A is false.
+
+- A<->B is true => add two child nodes: "A is true, B is true" and "A is false, B is false".
+- A<->B is false => add two child nodes: "A is true, B is false" and "A is false, B is true".
+
+Once we have no logical connectives left, we mark the current node as a leaf and
+recur back.
+3. If a leaf contains both "F is true" and "F is false", mark it with "X"
+(contradiction).
+4. If a tree contains only leaves with "X"s, we conclude that the formula A->B
+holds for any values of its terms.
+5. Otherwise, we pick the values of its terms such that the formula is false, thus
+showing it doesn't hold for any values of its terms.

@@ -1,0 +1,7 @@
+R
+Prove or disprove using sequent tree method: #->#.
+5
+~, v, &, ->
+4
+4
+Holds, Doesn't hold
