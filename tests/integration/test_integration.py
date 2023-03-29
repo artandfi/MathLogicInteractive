@@ -24,10 +24,11 @@ class ExamMock(Exam):
 
 
 class ModuleMock(Module):
+    name = "mock"
     progress_file_path = tmp_path
 
     def __init__(self):
-        self.name = "mock"
+        pass
 
 
 def test_save_progress():
