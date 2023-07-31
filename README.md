@@ -1,5 +1,16 @@
 # MathLogicInteractive
 
+## Preview
+
+![image](https://github.com/artandfi/MathLogicInteractive/assets/28676554/aae6a53d-6a65-402f-863e-160950b23af1)
+
+
+![image](https://github.com/artandfi/MathLogicInteractive/assets/28676554/6090591e-1cac-4f43-9a52-33aa66dfcc4a)
+
+
+![image](https://github.com/artandfi/MathLogicInteractive/assets/28676554/66caae6a-0556-4d15-898c-009a35865c37)
+
+
 ## Installation Guide
 Open the folder you'd like to install the program in in the terminal, and run the following command:
 
