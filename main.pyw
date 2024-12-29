@@ -8,6 +8,11 @@ from models.sequent_calculus.module import SequentCalculusModule
 from models.resolution_method.module import ResolutionMethodModule
 from util import score_letter
 
+import os
+if os.name == 'nt':  # Check if running on Windows
+    import ctypes
+    ctypes.windll.kernel32.FreeConsole()  # Detach the console
+
 
 modules = [
     PropositionalLogicModule(),
